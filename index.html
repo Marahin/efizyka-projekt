@@ -9,6 +9,22 @@
 	</head>
   
 	<body>
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">eFizyka - rzut ukośny</a></h1>
+        </li>
+         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="active"><a href="http://marahin.pl/">Autor</a></li>
+        </ul>
+      </section>
+    </nav>
     <div class="row">
       <div class="small-12 medium-12 large-12 columns">
         <div id="alert" data-alert class="alert-box info radius">
@@ -27,11 +43,11 @@
         <form id="values" style="text-align:center;">
           <label for="initial_velocity">Prędkość początkowa [m/s]</label>
           <input value=100 type="range" id="range_initial_velocity" />
-          <input type="text" id="text_initial_velocity" /><br/>
+          <input type="text" id="text_initial_velocity" step="any" /><br/>
           
           <label for="acceleration">Przyspieszenie (grawitacja) [m/s^2]</label>
           <input value=10 type="range" id="range_acceleration" />
-          <input type="text" id="text_acceleration" /><br/>
+          <input type="text" id="text_acceleration" step="any" /><br/>
 			
           <label for="angle">Kąt wyrzutu [stopnie]</label>
           <input value=60 type="range" id="range_angle" />

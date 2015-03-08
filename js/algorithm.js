@@ -3,13 +3,22 @@ function refresh_values(){
 	initial_velocity = $("#text_initial_velocity").val();
 	angle = $("#text_angle").val() / 180;
   flight_time = get_flight_time();
-	fill_chart();
-	print_flight_time();
+  alert = $("#alert");
+  alert.hide();
+  if ( 0 >= flight_time ){
+    alert.attr('class', 'alert-box alert');
+    alert.html("Niestety, ale piłka nawet nie drgnęła (czas lotu - 0 ms).")
+    alert.show();
+  }
+  else{
+    fill_chart();
+    print_flight_time();
+  }
 }
 
 function fill_chart(){
   penis = 0;
-  for(ms=0.0; ms <= flight_time; ms+=0.5){
+  for(ms=0.0; ms < flight_time; ms+=0.5){
     /* the function down there, dirty little function. */
     add_data( y(ms), x(ms) );
     console.log ( "MS: " + ms + " | y(ms): " + y(ms) + " | x(ms): " + x(ms) + " | " + penis);
