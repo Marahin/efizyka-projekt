@@ -3,36 +3,61 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>eFizyka - Projekt Konkursowy</title>
-		<script type="text/javascript" src="jquery.js"> </script>
-		<script type="text/javascript" src="Chart.js"> </script>
+    <script type="text/javascript" src="js/vendor/modernizr.js"> </script>
+    <script type="text/javascript" src="js/vendor/fastclick.js"> </script>
+    <link rel="stylesheet" href="css/foundation.css"> </link>
 	</head>
+  
 	<body>
+    <div class="row">
+      <div class="small-12 medium-12 large-12 columns">
+        <div id="alert" data-alert class="alert-box info radius">
+          Aby wygenerować symulację rzutu, kliknij przycisk na samym dole. Powodzenia!
+          <a href="#" class="close">&times;</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 medium-12 large-12 columns">		
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-6 medium-6 large-6 small-centered medium-centered large-centered columns">
+        <form id="values" style="text-align:center;">
+          <label for="initial_velocity">Prędkość początkowa [m/s]</label>
+          <input value=100 type="range" id="range_initial_velocity" />
+          <input type="text" id="text_initial_velocity" /><br/>
+          
+          <label for="acceleration">Przyspieszenie (grawitacja) [m/s^2]</label>
+          <input value=10 type="range" id="range_acceleration" />
+          <input type="text" id="text_acceleration" /><br/>
+			
+          <label for="angle">Kąt wyrzutu [stopnie]</label>
+          <input value=60 type="range" id="range_angle" />
+          <input type="text" id="text_angle" /><br/>
+			
+          <input type="button" id="submit" value="Rzucaj!" class="button expand success large" /><br/>
+        </form>
+      </div>
+    </div><!--
 		<div id="y_axis" style="text-align:left;">Oś Y: wysokość w metrach</div>
-		<canvas id="myChart" width="800" height="400"></canvas>
-		<div id="x_axis" style="text-align:right;">Oś X: odległość pozioma w metrach</div>
-		<form id="values" style="text-align:center;">
-			<label for="initial_velocity">Prędkość początkowa [m/s]</label>
-			<input value=100 type="range" id="range_initial_velocity" />
-			<input type="text" id="text_initial_velocity" /><br/>
-			
-			<label for="acceleration">Przyspieszenie (grawitacja) [m/s^2]</label>
-			<input value=10 type="range" id="range_acceleration" />
-			<input type="text" id="text_acceleration" /><br/>
-			
-			<label for="angle">Kąt wyrzutu [stopnie]</label>
-			<input value=60 type="range" id="range_angle" />
-			<input type="text" id="text_angle" /><br/>
-			
-			<input type="button" id="submit" value="Rzucaj!" /><br/>
-		</form>
+		<div id="x_axis" style="text-align:right;">Oś X: odległość pozioma w metrach</div>-->
+		
 		<div>
 			<div id="results_flight_time">
 			</div>
 		</div>
-		<script type="text/javascript" src="form_chart_config.js"></script>
-		<script type="text/javascript" src="physics.js"></script>
-		<script type="text/javascript" src="algorithm.js"></script>
+		<script type="text/javascript" src="js/vendor/jquery.js"> </script>
+    <script type="text/javascript" src="js/vendor/jquery.cookie.js"> </script>
+		<script type="text/javascript" src="js/vendor/Chart.js"> </script>    <script type="text/javascript" src="js/vendor/placeholder.js"> </script>
+
+    <script type="text/javascript" src="js/foundation.min.js"> </script>
+		<script type="text/javascript" src="js/form_chart_config.js"></script>
+		<script type="text/javascript" src="js/physics.js"></script>
+		<script type="text/javascript" src="js/algorithm.js"></script>
 		<script>
+    $(document).foundation();
 			synchronise("range"); /* no bo tak! */
 			$(document).ready(function(){
 				$("input[type=range]").on('mousemove', function(){
