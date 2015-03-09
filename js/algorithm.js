@@ -17,12 +17,9 @@ function refresh_values(){
 }
 
 function fill_chart(){
-  penis = 0;
   for(ms=0.0; ms < flight_time; ms+=0.5){
     /* the function down there, dirty little function. */
     add_data( y(ms), x(ms) );
-    console.log ( "MS: " + ms + " | y(ms): " + y(ms) + " | x(ms): " + x(ms) + " | " + penis);
-    penis++;
   }
   add_data(0, x(flight_time));
   var myLineChart = new Chart(ctx).Line(data, options);
