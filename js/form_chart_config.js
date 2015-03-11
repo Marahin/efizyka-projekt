@@ -4,7 +4,8 @@ function synchronise(value){
 	names.push(
 		"initial_velocity",
 		"acceleration",
-		"angle"
+		"angle",
+    "initial_height"
 	);
 	for(n in names){
 		name = names[n];
@@ -24,10 +25,10 @@ var data = {
 	labels: [],
   datasets: [
     {
-      label: "penis",
-      fillColor: "rgba(220,220,220,0.2)",
-      strokeColor: "rgba(220,220,220,1)",
-      pointColor: "rgba(220,220,220,1)",
+      label: "Rzut",
+      fillColor: "rgba(151,187,205,0.2)",
+      strokeColor: "rgba(151,187,205,1)",
+      pointColor: "rgba(151,187,205,1)",
       pointStrokeColor: "#fff",
       pointHighlightFill: "#fff",
       pointHighlightStroke: "rgba(220,220,220,1)",
@@ -35,6 +36,24 @@ var data = {
     }
   ]
 };
+
+function clear_chart_data(){
+  data = {
+  	labels: [],
+    datasets: [
+      {
+        label: "Rzut",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        data: []
+      }
+    ]
+  };
+}
 /* opcje wykresu */
 var options = {
     // Boolean - Whether to animate the chart

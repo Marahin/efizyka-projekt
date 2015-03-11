@@ -42,29 +42,63 @@
     <div class="row">
       <div class="small-6 medium-6 large-6 small-centered medium-centered large-centered columns">
         <form id="values" style="text-align:center;">
-          <label for="initial_velocity">Prędkość początkowa [m/s]</label>
+          <label for="initial_velocity" class="label">Prędkość początkowa [m/s]</label>
           <input value=100 type="range" id="range_initial_velocity" />
           <input type="text" id="text_initial_velocity" step="any" /><br/>
+          <label for="initial_height" class="label">Wysokość początkowa [m]</label>
+          <input value=0 type="range" id="range_initial_height" />
+          <input type="text" id="text_initial_height" /><br/>
+          <label for="steps" class="label">Ilość pomiarów (punktów wykresowych)</label>
+          <input value=20 type="text" id="steps" /><br/>
           
-          <label for="acceleration">Przyspieszenie (grawitacja) [m/s^2]</label>
+          <label for="acceleration" class="label">Przyspieszenie (grawitacja) [m/s^2]</label>
           <input value=10 type="range" id="range_acceleration" />
           <input type="text" id="text_acceleration" step="any" /><br/>
 			
-          <label for="angle">Kąt wyrzutu [stopnie]</label>
+          <label for="angle" class="label">Kąt wyrzutu [stopnie]</label>
           <input value=60 type="range" id="range_angle" />
           <input type="text" id="text_angle" /><br/>
 			
           <input type="button" id="submit" value="Rzucaj!" class="button expand success large" /><br/>
         </form>
       </div>
-    </div><!--
+    </div>
+    <div class="row">
+      <div class="small-6 medium-6 large-6 small-centered medium-centered large-centered columns">
+        <table>
+          <thead>
+            <tr>
+              <th width=200>Wartości</th>
+              <th>Największa</th>
+              <th>Najmniejsza</th>
+              <th>Średnia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Prędkość lotu</td>
+            </tr>
+            <tr>
+              <td>Wysokość</td>
+              <td id="results_max_height"></td>
+              <td>0 m</td>
+              <td id="results_average_height"></td>
+            </tr>
+            <tr>
+              <td>Czas lotu</td>
+              <td id="results_flight_time" colspan=3></td>
+            </tr>
+            <tr>
+              <td>Zasięg</td>
+              <td id="results_range" colspan=3></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!--
 		<div id="y_axis" style="text-align:left;">Oś Y: wysokość w metrach</div>
 		<div id="x_axis" style="text-align:right;">Oś X: odległość pozioma w metrach</div>-->
-		
-		<div>
-			<div id="results_flight_time">
-			</div>
-		</div>
 		<script type="text/javascript" src="js/vendor/jquery.js"> </script>
     <script type="text/javascript" src="js/vendor/jquery.cookie.js"> </script>
 		<script type="text/javascript" src="js/vendor/Chart.js"> </script>    <script type="text/javascript" src="js/vendor/placeholder.js"> </script>
