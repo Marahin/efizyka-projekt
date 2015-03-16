@@ -9,6 +9,12 @@ function refresh_values(){
   alert = $("#alert").html("Następujące problemy nie pozwoliły na uruchomienie wykresu: <ul>");
   alert.hide();
   var alert_show = false;
+  if ( 0 == acceleration ){
+    alert.append(
+    "<br/><li>Przyspieszenie grawitacyjne nie może równać się 0 bo... piłka będzie leciała nieskończenie daleko w górę (dopóki nie trafi na inne przyspieszenie). :)</li>" +
+    "<br/><li>Nie można wyliczyć czasu lotu, ani maksymalnej wysokości, gdyż są one nieskończone (przyspieszenie = 0?).</li>"
+    );
+  }
   if ( 0 >= flight_time ){
     alert.append("<br/><li>Niestety, ale piłka nawet nie drgnęła (czas lotu - 0 ms).</li>")
     alert_show = true;
@@ -18,10 +24,10 @@ function refresh_values(){
     alert_show = true;
   }
   if ( 1 >= steps ){
-    alert.append("<br/><li>Ustawiłeś za mało punktów wyliczeniowych (wymagane przynajmniej dwa, aby wykres się pokazał).li>");
+    alert.append("<br/><li>Ustawiłeś za mało punktów wyliczeniowych (wymagane przynajmniej dwa, aby wykres się pokazał).</li>");
     alert_show = true;
   }
-  else{
+  if ( ! alert_show ){
     clear_chart();
     fill_chart();
     print_results();

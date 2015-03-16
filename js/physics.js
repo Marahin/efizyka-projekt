@@ -16,7 +16,7 @@ function y(t){
 }
 
 function get_ascension_time(){
-	return ( v0y() / acceleration );
+	return ( v0y() / parseInt(acceleration) );
 }
 function get_max_height(){
 	return y( get_ascension_time() );
