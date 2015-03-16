@@ -6,25 +6,30 @@ function refresh_values(){
   angle = $("#text_angle").val() * (Math.PI/180);
   steps = $("#steps").val() - 1;
   flight_time = get_flight_time();
-  alert = $("#alert");
+  alert = $("#alert").html("Następujące problemy nie pozwoliły na uruchomienie wykresu: <ul>");
   alert.hide();
+  var alert_show = false;
   if ( 0 >= flight_time ){
-    alert.attr('class', 'alert-box alert');
-    alert.html("Niestety, ale piłka nawet nie drgnęła (czas lotu - 0 ms).")
-    alert.show();
+    alert.append("<br/><li>Niestety, ale piłka nawet nie drgnęła (czas lotu - 0 ms).</li>")
+    alert_show = true;
   }
-  else if ( 0 >= get_max_height() ){
-    alert.attr('class', 'alert-box alert');
-    alert.html("Niestety, ale piłka od razu spadła na ziemię (maksymalna wysokość - 0m).")    
+  if ( 0 >= get_max_height() ){
+    alert.append("<br/><li>Niestety, ale piłka od razu spadła na ziemię (maksymalna wysokość - 0m).</li>")    
+    alert_show = true;
   }
-  else if ( 1 >= steps ){
-    alert.attr('class', 'alert-box alert');
-    alert.html("Ustawiłeś za mało punktów wyliczeniowych (wymagane przynajmniej dwa, aby wykres się pokazał). Uruchamiam wykres z 20 punktami.");
+  if ( 1 >= steps ){
+    alert.append("<br/><li>Ustawiłeś za mało punktów wyliczeniowych (wymagane przynajmniej dwa, aby wykres się pokazał).li>");
+    alert_show = true;
   }
   else{
     clear_chart();
     fill_chart();
     print_results();
+  }
+  alert.append("</ul>");
+  if ( alert_show ){
+    alert.attr('class', 'alert-box alert');
+    alert.show();
   }
 }
 
