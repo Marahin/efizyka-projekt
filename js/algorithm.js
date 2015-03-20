@@ -48,14 +48,16 @@ function clear_chart(){
 
 function fill_chart(){
   average_height=0;
+  average_velocity=0;
   var step = Math.round( 1000 * flight_time/steps)/1000;
   for(ms=0.0; ms < flight_time; ms+=step){
     add_data( y(ms), x(ms) );
     average_height+=y(ms);
-    console.log("Y(" + ms + "): " + y(ms) + ", x(" + ms + "): " + x(ms));
+    average_velocity+=obj_velocity(ms);
+/*    console.log("Y(" + ms + "): " + y(ms) + ", x(" + ms + "): " + x(ms)); */
+    console.log("Object's velocity at " + ms + "ms: " + obj_velocity(ms) );
   }
   add_data(0, x(flight_time));
-  console.log("Y(" + ms + "): 0, x(" + ms + "): " + x(ms));
   myLineChart = new Chart(ctx).Line(data, options);
 }
 
@@ -72,6 +74,8 @@ function print_results(){
 	$("#results_flight_time").html( get_flight_time() + " sek" );
   $("#results_range").html( get_range() + " m");
   /* velocity measurement */
+  $("#results_max_velocity").html( $("#text_initial_velocity").val() + " m/s" );
+  $("#results_average_velocity").html( get_average_velocity(steps+1) + " m/s" );
   /* height measurement */
   $("#results_average_height").html( get_average_height(steps+1) + " m");
   $("#results_max_height").html( get_max_height() + " m");

@@ -7,6 +7,18 @@ function v0y(){
 	return Math.sin(angle) * initial_velocity ;
 }
 
+function vy(t){
+  return ( v0y() - (parseInt(acceleration) * t) );
+}
+
+function vx(t){
+  return v0x(); /* the x axis velocity is constant and equals to vox */
+}
+
+function obj_velocity(t){
+  return Math.sqrt( Math.pow(v0x(), 2) + Math.pow(vy(t), 2) );
+}
+
 function x(t){
 	return Math.round( 100 * v0x() * t ) / 100 ;
 }
@@ -32,4 +44,8 @@ function get_range(){
 
 function get_average_height(steps){
   return Math.round( 100 * average_height/steps)/100;
+}
+
+function get_average_velocity(steps){
+  return Math.round( 100 * average_velocity/steps )/100;
 }
