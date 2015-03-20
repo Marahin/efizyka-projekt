@@ -19,11 +19,30 @@
 }
 */
 /* czyszczenie wykresu */
+
 function clear_chart(){
   if ( typeof myLineChart !== "undefined" ){
     myLineChart.destroy(); 
     clear_chart_data();
   }
+}
+
+function clear_chart_data(){
+  data = {
+  	labels: [],
+    datasets: [
+      {
+        label: "Rzut",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        data: []
+      }
+    ]
+  };
 }
 
 /* dodawanie danych do wykresu */
@@ -53,23 +72,6 @@ var data = {
   ]
 };
 
-function clear_chart_data(){
-  data = {
-  	labels: [],
-    datasets: [
-      {
-        label: "Rzut",
-        fillColor: "rgba(151,187,205,0.2)",
-        strokeColor: "rgba(151,187,205,1)",
-        pointColor: "rgba(151,187,205,1)",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(220,220,220,1)",
-        data: []
-      }
-    ]
-  };
-}
 /* opcje wykresu */
 var options = {
     // Boolean - Whether to animate the chart
