@@ -1,5 +1,5 @@
 function refresh_values(){
-	acceleration = $("#text_acceleration").val();
+	acceleration = parseFloat( $("#text_acceleration").val() );
 	initial_velocity = $("#text_initial_velocity").val();
   initial_height = $("#text_initial_height").val();
   /* remember that the angle should be measured in RADIANS, not in degrees (conversion below) */
@@ -14,6 +14,7 @@ function refresh_values(){
     "<br/><li>Przyspieszenie grawitacyjne nie może równać się 0 bo... piłka będzie leciała nieskończenie daleko w górę (dopóki nie trafi na inne przyspieszenie). :)</li>" +
     "<br/><li>Nie można wyliczyć czasu lotu, ani maksymalnej wysokości, gdyż są one nieskończone (przyspieszenie = 0?).</li>"
     );
+    alert_show = true;
   }
   if ( 0 >= flight_time ){
     alert.append("<br/><li>Niestety, ale piłka nawet nie drgnęła (czas lotu - 0 ms).</li>")
