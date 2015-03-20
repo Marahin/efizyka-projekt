@@ -43,21 +43,21 @@
       <div class="small-3 medium-6 large-6 small-centered medium-centered large-centered columns">
         <form id="values" style="text-align:center;">
           <label for="initial_velocity" class="label">Prędkość początkowa [m/s]</label>
-          <input value=100 type="range" id="range_initial_velocity" />
-          <input type="text" id="text_initial_velocity" step="any" /><br/>
+          <!-- ><input value=100 type="range" id="range_initial_velocity" /> -->
+          <input type="text" value=100 id="text_initial_velocity" step="any" /><br/>
           <label for="initial_height" class="label">Wysokość początkowa [m]</label>
-          <input value=0 type="range" id="range_initial_height" />
-          <input type="text" id="text_initial_height" /><br/>
+<!--          <input value=0 type="range" id="range_initial_height" /> -->
+          <input type="text" value=0 id="text_initial_height" /><br/>
           <label for="steps" class="label">Ilość pomiarów (punktów wykresowych)</label>
           <input value=20 type="text" id="steps" /><br/>
           
           <label for="acceleration" class="label">Przyspieszenie (grawitacja) [m/s^2]</label>
-          <input value=10 type="range" id="range_acceleration" />
-          <input type="text" id="text_acceleration" step="any" /><br/>
+<!--          <input value=10 type="range" id="range_acceleration" /> -->
+          <input type="text" value=10 id="text_acceleration" step="any" /><br/>
 			
           <label for="angle" class="label">Kąt wyrzutu [stopnie]</label>
-          <input value=60 type="range" id="range_angle" />
-          <input type="text" id="text_angle" /><br/>
+<!--          <input value=60 type="range" id="range_angle" /> -->
+          <input type="text" value=60 id="text_angle" /><br/>
 			
           <input type="button" id="submit" value="Rzucaj!" class="button expand success large" /><br/>
         </form>
@@ -77,6 +77,9 @@
           <tbody>
             <tr>
               <td>Prędkość lotu</td>
+              <td id="results_max_velocity"></td>
+              <td>0 m/s</td>
+              <td id="results_average_velocity"></td>
             </tr>
             <tr>
               <td>Wysokość</td>
@@ -109,14 +112,14 @@
 		<script type="text/javascript" src="js/algorithm.js"></script>
 		<script>
     $(document).foundation();
-			synchronise("range"); /* no bo tak! */
-			$(document).ready(function(){
+			// synchronise("range"); /* no bo tak! */
+			$(document).ready(function(){ /*
 				$("input[type=range]").on('mousemove', function(){
 					synchronise("range");
 				});
 				$("input[type=text]").on('keyup', function(){
 					synchronise("text");
-				});
+				}); */
 				$("input[type=button]").on('click', function(){
 					refresh_values();
 				})

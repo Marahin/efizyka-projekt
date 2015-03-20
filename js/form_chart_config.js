@@ -1,5 +1,5 @@
 /* synchronizacja pol tekstowych i zakresow przy zmianie wartosci */
-function synchronise(value){
+/* function synchronise(value){
 	var names = new Array;
 	names.push(
 		"initial_velocity",
@@ -17,7 +17,7 @@ function synchronise(value){
 		}
 	}
 }
-
+*/
 /* rysowanie wykresu */
 
 var ctx = document.getElementById("myChart").getContext("2d");	
