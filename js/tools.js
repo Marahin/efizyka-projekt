@@ -1,14 +1,35 @@
 function refresh_values(){
 	acceleration = parseFloat( $("#text_acceleration").val() );
-	initial_velocity = $("#text_initial_velocity").val();
-  initial_height = $("#text_initial_height").val();
+	initial_velocity = parseFloat( $("#text_initial_velocity").val() );
+  initial_height = parseFloat( $("#text_initial_height").val() );
   /* remember that the angle should be measured in RADIANS, not in degrees (conversion below) */
-  angle = $("#text_angle").val() * (Math.PI/180);
+  angle = parseInt( $("#text_angle").val() );
   steps = $("#steps").val() - 1;
-  flight_time = get_flight_time();
+  alerts();
+}
+
+function alerts(){
   alert = $("#alert").html("Następujące problemy nie pozwoliły na uruchomienie wykresu: <ul>");
   alert.hide();
   var alert_show = false;
+  if ( 299792458 <= initial_velocity ){
+    alert.append(
+      "<br/><li>Hej! Zwariowałeś? Czy w ogóle pomyślałeś co może się stać, gdy rzucisz piłką z prędkością światła? Popraw to!</li>"
+    );
+    alert_show = true;
+  }
+  if ( 90 < angle || 0 > angle ){
+    alert.append(
+      "<br/><li>Kąt rzutu musi być liczbą naturalną z przedziału <0,90>. Nie chcemy rzucać za siebie, bo jeszcze kogoś trafimy.</li>"
+    );
+    alert_show = true;
+    flight_time = 0; 
+  }
+  else{
+    angle = angle * (Math.PI/180);
+    /* now we can get the flight_time */
+    flight_time = get_flight_time();
+  }
   if ( 0 == acceleration ){
     alert.append(
     "<br/><li>Przyspieszenie grawitacyjne nie może równać się 0 bo... piłka będzie leciała nieskończenie daleko w górę (dopóki nie trafi na inne przyspieszenie). :)</li>" +
@@ -16,8 +37,8 @@ function refresh_values(){
     );
     alert_show = true;
   }
-  if ( 0 >= flight_time ){
-    alert.append("<br/><li>Niestety, ale piłka nawet nie drgnęła (czas lotu - 0 ms).</li>")
+  if ( 0 >= flight_time  ){
+    alert.append("<br/><li>Niestety, ale piłka nawet nie drgnęła (czas lotu - 0 ms).</li>");
     alert_show = true;
   }
   if ( 0 >= get_max_height() ){
@@ -40,13 +61,6 @@ function refresh_values(){
   }
 }
 
-function clear_chart(){
-  if ( typeof myLineChart !== "undefined" ){
-    myLineChart.destroy(); 
-    clear_chart_data();
-  }
-}
-
 function fill_chart(){
   average_height=0;
   average_velocity=0;
@@ -55,19 +69,9 @@ function fill_chart(){
     add_data( y(ms), x(ms) );
     average_height+=y(ms);
     average_velocity+=obj_velocity(ms);
-/*    console.log("Y(" + ms + "): " + y(ms) + ", x(" + ms + "): " + x(ms)); */
-    console.log("Object's velocity at " + ms + "ms: " + obj_velocity(ms) );
   }
   add_data(0, x(flight_time));
   myLineChart = new Chart(ctx).Line(data, options);
-}
-
-
-
-/* dirty chart.js workaround */
-function add_data(y,x){
-  data.labels.push(x);
-  data.datasets[0].data.push(y);
 }
 
 function print_results(){

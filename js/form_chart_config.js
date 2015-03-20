@@ -18,6 +18,22 @@
 	}
 }
 */
+/* czyszczenie wykresu */
+function clear_chart(){
+  if ( typeof myLineChart !== "undefined" ){
+    myLineChart.destroy(); 
+    clear_chart_data();
+  }
+}
+
+/* dodawanie danych do wykresu */
+
+/* dirty chart.js workaround */
+function add_data(y,x){
+  data.labels.push(x);
+  data.datasets[0].data.push(y);
+}
+
 /* rysowanie wykresu */
 
 var ctx = document.getElementById("myChart").getContext("2d");	
