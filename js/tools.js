@@ -91,12 +91,12 @@ function fill_chart(){
 
 function print_results(){
   /* static flight time, range */
-	$("#results_flight_time").html( get_flight_time() + " sek" );
-  $("#results_range").html( get_range() + " m");
+	$("#results_flight_time").html( Math.round(1000 * get_flight_time())/1000 + " sek" );
+  $("#results_range").html( Math.round(1000 * get_range())/1000 + " m");
   /* velocity measurement */
-  $("#results_max_velocity").html( $("#text_initial_velocity").val() + " m/s" );
-  $("#results_average_velocity").html( get_average_velocity(steps+1) + " m/s" );
+  $("#results_max_velocity").html( initial_velocity + " m/s" );
+  $("#results_average_velocity").html( Math.round( 1000 * get_average_velocity(steps+1))/1000+ " m/s" );
   /* height measurement */
-  $("#results_average_height").html( get_average_height(steps+1) + " m");
-  $("#results_max_height").html( get_max_height() + " m");
+  $("#results_average_height").html( Math.round(1000*get_average_height(steps+1))/1000 + " m");
+  $("#results_max_height").html( Math.round(1000*get_max_height())/1000 + " m");
 }
