@@ -8,7 +8,7 @@ function v0y(){
 }
 
 function vy(t){
-  return ( v0y() -acceleration * t);
+  return ( v0y() - acceleration * t);
 }
 
 function vx(t){
