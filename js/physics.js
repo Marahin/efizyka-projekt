@@ -20,11 +20,11 @@ function obj_velocity(t){
 }
 
 function x(t){
-	return Math.round( 100 * v0x() * t ) / 100 ;
+	return Math.round(100*v0x() * t)/100;
 }
 
 function y(t){
-	return Math.round( 100 * (initial_velocity * t * Math.sin(angle) - ( acceleration / 2 ) * t * t )) /100;
+	return initial_velocity * t * Math.sin(angle) - ( acceleration / 2 ) * t * t ;
 }
 
 function get_ascension_time(){

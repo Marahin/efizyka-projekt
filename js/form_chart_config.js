@@ -107,7 +107,7 @@ var options = {
     scaleShowLabels: true,
 
     // Interpolated JS string - can access value
-    scaleLabel: "<%=value%>m",
+    scaleLabel: "<%= Math.round( 100 * value)/100 %>m",
 
     // Boolean - Whether the scale should stick to integers, not floats even if drawing space is there
     scaleIntegersOnly: false,
@@ -185,10 +185,10 @@ var options = {
     tooltipXOffset: 10,
 
     // String - Template string for single tooltips
-    tooltipTemplate: "<%if (label){%><%=label%>m poziomo: <%}%><%= value %>m wysokości",
+    tooltipTemplate: "<%if (label){%><%=Math.round(100*label)/100%>m poziomo: <%}%><%= Math.round(100*value)/100 %>m wysokości",
 
     // String - Template string for single tooltips
-    multiTooltipTemplate: "<%= value %>m wysokości",
+    multiTooltipTemplate: "<%= Math.round(100*value)/100 %>m wysokości",
 
     // Function - Will fire on animation progression.
     onAnimationProgress: function(){},
