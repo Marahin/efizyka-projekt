@@ -1,4 +1,9 @@
 function refresh_values(){
+  
+  $("form#values :input[type=text]").each(function(){
+    this.value = this.value.replace(",", ".");
+    });
+  
 	acceleration = parseFloat( $("#text_acceleration").val() );
 	initial_velocity = parseFloat( $("#text_initial_velocity").val() );
   initial_height = parseFloat( $("#text_initial_height").val() );
