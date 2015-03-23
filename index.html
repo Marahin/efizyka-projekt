@@ -121,8 +121,9 @@
 					synchronise("text");
 				}); */
 				$("input[type=button]").on('click', function(){
-					refresh_values();
-				})
+					body = $("html, body");
+					body.animate({scrollTop:0}, '500', 'swing', function() { refresh_values(); });
+				});
 			});
 		</script>
 	</body>
