@@ -35,7 +35,8 @@ function get_max_height(){
 }
 
 function get_flight_time(){
-	return Math.round( 1000 * (2 * initial_velocity * Math.sin(angle))/acceleration )/1000;
+	return ((2 * initial_velocity * Math.sin(angle))/acceleration);
+	// return Math.round( 1000 * (2 * initial_velocity * Math.sin(angle))/acceleration )/1000;
 }
 
 function get_range(){

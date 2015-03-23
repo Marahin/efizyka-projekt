@@ -70,13 +70,15 @@ function alerts(){
 function fill_chart(){
   average_height=0;
   average_velocity=0;
-  var step = Math.round( 1000 * flight_time/steps)/1000;
+  // var step = Math.round( 1000 * flight_time/steps)/1000;
+  step = flight_time/steps;
   for(ms=0.0; ms < flight_time; ms+=step){
     add_data( y(ms), x(ms) );
     average_height+=y(ms);
     average_velocity+=obj_velocity(ms);
   }
-  add_data(0, x(flight_time));
+  // add_data(0, x(flight_time));
+  add_data(y(flight_time), x(flight_time));
   myLineChart = new Chart(ctx).Line(data, options);
 }
 
