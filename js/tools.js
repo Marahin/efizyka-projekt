@@ -52,7 +52,7 @@ function alerts(){
     alert_container.append("<li>Niestety, ale piłka od razu spadła na ziemię (maksymalna wysokość - 0m).</li>")    
     alert_show = true;
   }
-  if ( 1 >= steps ){
+  if ( 2 >= steps ){
     alerts_container.append("<li>Ustawiłeś za mało punktów wyliczeniowych (wymagane przynajmniej dwa, aby wykres się pokazał).</li>");
     alert_show = true;
   }
