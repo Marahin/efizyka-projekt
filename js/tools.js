@@ -72,13 +72,19 @@ function fill_chart(){
   average_velocity=0;
   // var step = Math.round( 1000 * flight_time/steps)/1000;
   step = flight_time/steps;
-  for(ms=0.0; ms < flight_time; ms+=step){
-    add_data( y(ms), x(ms) );
-    average_height+=y(ms);
-    average_velocity+=obj_velocity(ms);
+  // for(ms=0.0; ms < flight_time; ms+=step){
+    //add_data( y(ms), x(ms) );
+    //average_height+=y(ms);
+    //average_velocity+=obj_velocity(ms);
+//  }
+  for(n=0; n<=steps; n++) {
+    add_data( y(n * flight_time / steps), x(n * flight_time / steps) );
+    average_height+=y(n * flight_time / steps);
+    average_velocity+=obj_velocity(n * flight_time / steps);
   }
   // add_data(0, x(flight_time));
-  add_data(y(flight_time), x(flight_time));
+  //document.title=parseInt(1000000 * y(ms));
+  //if( y(ms) > 0 ) add_data(y(flight_time), x(flight_time));
   myLineChart = new Chart(ctx).Line(data, options);
 }
 
