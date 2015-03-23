@@ -9,6 +9,7 @@ function refresh_values(){
   initial_height = parseFloat( $("#text_initial_height").val() );
   /* remember that the angle should be measured in RADIANS, not in degrees (conversion below) */
   angle = parseInt( $("#text_angle").val() );
+  $("#steps").val(parseInt($("#steps").val()));
   steps = $("#steps").val() - 1;
   alerts();
 }
