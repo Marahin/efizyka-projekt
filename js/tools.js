@@ -10,17 +10,17 @@ function refresh_values(){
 
 function alerts(){
 	var alert_show = false;
-	alert = $("#alert");
-	alert.hide();
+	alerts = $("#alert");
+	alerts.hide();
 	$("#alert").html("Następujące problemy nie pozwoliły na uruchomienie wykresu: <ul>");
   if ( 299792458 <= initial_velocity ){
-    alert.append(
+    alerts.append(
       "<li>Hej! Zwariowałeś? Czy w ogóle pomyślałeś co może się stać, gdy rzucisz piłką z prędkością światła? Popraw to!</li>"
     );
     alert_show = true;
   }
   if ( 90 < angle || 0 > angle ){
-    alert.append(
+    alerts.append(
       "<li>Kąt rzutu musi być liczbą naturalną z przedziału <0,90>. Nie chcemy rzucać za siebie, bo jeszcze kogoś trafimy.</li>"
     );
     alert_show = true;
@@ -32,22 +32,22 @@ function alerts(){
     flight_time = get_flight_time();
   }
   if ( 0 == acceleration ){
-    alert.append(
+    alerts.append(
     "<li>Przyspieszenie grawitacyjne nie może równać się 0 bo... piłka będzie leciała nieskończenie daleko w górę (dopóki nie trafi na inne przyspieszenie). :)</li>" +
     "<li>Nie można wyliczyć czasu lotu, ani maksymalnej wysokości, gdyż są one nieskończone (przyspieszenie = 0?).</li>"
     );
     alert_show = true;
   }
   if ( 0 >= flight_time  ){
-    alert.append("<li>Niestety, ale piłka nawet nie drgnęła (czas lotu - 0 ms).</li>");
+    alerts.append("<li>Niestety, ale piłka nawet nie drgnęła (czas lotu - 0 ms).</li>");
     alert_show = true;
   }
   if ( 0 >= get_max_height() ){
-    alert.append("<li>Niestety, ale piłka od razu spadła na ziemię (maksymalna wysokość - 0m).</li>")    
+    alerts.append("<li>Niestety, ale piłka od razu spadła na ziemię (maksymalna wysokość - 0m).</li>")    
     alert_show = true;
   }
   if ( 1 >= steps ){
-    alert.append("<li>Ustawiłeś za mało punktów wyliczeniowych (wymagane przynajmniej dwa, aby wykres się pokazał).</li>");
+    alerts.append("<li>Ustawiłeś za mało punktów wyliczeniowych (wymagane przynajmniej dwa, aby wykres się pokazał).</li>");
     alert_show = true;
   }
   if ( ! alert_show ){
@@ -55,10 +55,10 @@ function alerts(){
     fill_chart();
     print_results();
   }
-  alert.append("</ul>");
+  alerts.append("</ul>");
   if ( alert_show ){
-    alert.attr('class', 'alert-box alert');
-    alert.show();
+    alerts.attr('class', 'alert-box alert');
+    alerts.show();
   }
 }
 
