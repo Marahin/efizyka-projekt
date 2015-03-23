@@ -53,7 +53,7 @@ function alerts(){
     alert_show = true;
   }
   if ( 2 >= steps ){
-    alerts_container.append("<li>Ustawiłeś za mało punktów wyliczeniowych (wymagane przynajmniej dwa, aby wykres się pokazał).</li>");
+    alert_container.append("<li>Ustawiłeś za mało punktów wyliczeniowych (wymagane przynajmniej dwa, aby wykres się pokazał).</li>");
     alert_show = true;
   }
   if ( ! alert_show ){
