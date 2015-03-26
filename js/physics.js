@@ -39,6 +39,13 @@ function get_flight_time(){
 	// return Math.round( 1000 * (2 * initial_velocity * Math.sin(angle))/acceleration )/1000;
 }
 
+function get_average_velocity(){
+	VavgY = v0y() / 2;
+  VavgX = v0x();
+  Vavg = Math.sqrt(Math.pow(VavgY, 2) + Math.pow(VavgX, 2));
+	return Vavg;
+}
+
 function get_range(){
 	return Math.round ( 100 *( (initial_velocity * initial_velocity) / acceleration ) * Math.sin(2 * angle) ) / 100 ;
 }

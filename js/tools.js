@@ -1,9 +1,9 @@
 function refresh_values(){
-  
+
   $("form#values :input[type=text]").each(function(){
     this.value = this.value.replace(",", ".");
     });
-  
+
 	acceleration = parseFloat( $("#text_acceleration").val() );
 	initial_velocity = parseFloat( $("#text_initial_velocity").val() );
   initial_height = parseFloat( $("#text_initial_height").val() );
@@ -30,7 +30,7 @@ function alerts(){
       "<li>Kąt rzutu musi być liczbą naturalną z przedziału <0,90>. Nie chcemy rzucać za siebie, bo jeszcze kogoś trafimy.</li>"
     );
     alert_show = true;
-    flight_time = 0; 
+    flight_time = 0;
   }
   else{
     angle = angle * (Math.PI/180);
@@ -49,7 +49,7 @@ function alerts(){
     alert_show = true;
   }
   if ( 0 >= get_max_height() ){
-    alert_container.append("<li>Niestety, ale piłka od razu spadła na ziemię (maksymalna wysokość - 0m).</li>")    
+    alert_container.append("<li>Niestety, ale piłka od razu spadła na ziemię (maksymalna wysokość - 0m).</li>")
     alert_show = true;
   }
   if ( 2 > steps ){
@@ -95,7 +95,12 @@ function print_results(){
   $("#results_range").html( Math.round(1000 * get_range())/1000 + " m");
   /* velocity measurement */
   $("#results_max_velocity").html( initial_velocity + " m/s" );
-  $("#results_average_velocity").html( Math.round( 1000 * get_average_velocity(steps+1))/1000+ " m/s" );
+  $("#results_min_velocity").html( Math.round(1000 * v0x())/1000 + " m/s" );
+  /* super cool average velocity - thanks to kocio */
+  	VavgY = v0y() / 2;
+    VavgX = v0x();
+    Vavg = Math.sqrt(Math.pow(VavgY, 2) + Math.pow(VavgX, 2));
+  $("#results_average_velocity").html( Math.round(1000 * Vavg)/1000 + " m/s"  );
   /* height measurement */
   $("#results_average_height").html( Math.round(1000*get_average_height(steps+1))/1000 + " m");
   $("#results_max_height").html( Math.round(1000*get_max_height())/1000 + " m");

@@ -8,7 +8,7 @@
     <script type="text/javascript" src="js/vendor/fastclick.js"> </script>
     <link rel="stylesheet" href="css/foundation.css"> </link>
 	</head>
-  
+
 	<body><div class="sticky">
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
@@ -35,7 +35,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="small-12 medium-12 large-12 columns">		
+      <div class="small-12 medium-12 large-12 columns">
         <canvas id="myChart"></canvas>
       </div>
     </div>
@@ -50,15 +50,15 @@
 <!--          <input type="text" value=0 id="text_initial_height" /><br/> -->
           <label for="steps" class="label">Ilość pomiarów (punktów wykresowych)</label>
           <input value=20 type="text" id="steps" /><br/>
-          
+
           <label for="acceleration" class="label">Przyspieszenie (grawitacja) [m/s^2]</label>
 <!--          <input value=10 type="range" id="range_acceleration" /> -->
           <input type="text" value=10 id="text_acceleration" step="any" /><br/>
-			
+
           <label for="angle" class="label">Kąt wyrzutu [stopnie]</label>
 <!--          <input value=60 type="range" id="range_angle" /> -->
           <input type="text" value=60 id="text_angle" /><br/>
-			
+
           <input type="button" id="submit" value="Rzucaj!" class="button expand success large" /><br/>
         </form>
       </div>
@@ -78,7 +78,7 @@
             <tr>
               <td>Prędkość lotu</td>
               <td id="results_max_velocity"></td>
-              <td>0 m/s</td>
+              <td id="results_min_velocity"></td>
               <td id="results_average_velocity"></td>
             </tr>
             <tr>
