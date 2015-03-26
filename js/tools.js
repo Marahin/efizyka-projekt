@@ -12,6 +12,7 @@ function refresh_values(){
   $("#steps").val(parseInt($("#steps").val()));
   steps = $("#steps").val() - 1;
   alerts();
+  $("#myChart").show();
 }
 
 function alerts(){
