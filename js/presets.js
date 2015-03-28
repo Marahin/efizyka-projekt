@@ -20,7 +20,7 @@ function fill_presets(){
       pluto = new Preset( "Pluton", 0.66, "Planeta karłowata, dziewiąty w kolejności obiekt od Słońca.")
 
     ], function(index,value){
-      $(".top-bar-section .right .has-dropdown .dropdown").append("<li class=\"preset-item\" accel=\"" + value.acceleration + "\"><a href=\"#\">" + value.name + "</a></li>");
+      $(".top-bar-section .right .has-dropdown .dropdown").append("<li class=\"preset-item\" name=\"" + value.name + "\" accel=\"" + value.acceleration + "\"><a href=\"#\">" + value.name + "</a></li>");
     }
   );
   $(".preset-item").click(function(){
@@ -29,7 +29,7 @@ function fill_presets(){
     if ( alert_container.is(":visible") ){
       alert_container.hide();
     }
-    alert_container.html( "Wczytano ustawienie pomyślnie!" ).attr("class", "alert-box success round");
+    alert_container.html( "Wczytano ustawienie pomyślnie! (" + $(this).attr("name") + ")" ).attr("class", "alert-box success round");
     if ( alert_container.is(":hidden") ){
       alert_container.slideDown("slow");
     }
