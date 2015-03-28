@@ -20,12 +20,7 @@ function alerts(){
 	var alert_container = $("#alert");
 	alert_container.hide();
 	$("#alert").html("Następujące problemy nie pozwoliły na uruchomienie wykresu: <ul>");
-  if ( 299792458 <= initial_velocity ){
-    alert_container.append(
-      "<li>Hej! Zwariowałeś? Czy w ogóle pomyślałeś co może się stać, gdy rzucisz piłką z prędkością światła? Popraw to!</li>"
-    );
-    alert_show = true;
-  }
+  /* constant if, dont touch */
   if ( 90 < angle || 0 > angle ){
     alert_container.append(
       "<li>Kąt rzutu musi być liczbą naturalną z przedziału <0,90>. Nie chcemy rzucać za siebie, bo jeszcze kogoś trafimy.</li>"
@@ -37,6 +32,14 @@ function alerts(){
     angle = angle * (Math.PI/180);
     /* now we can get the flight_time */
     flight_time = get_flight_time();
+  }
+
+  /* ifs */
+  if ( 299792458 <= initial_velocity ){
+    alert_container.append(
+      "<li>Hej! Zwariowałeś? Czy w ogóle pomyślałeś co może się stać, gdy rzucisz piłką z prędkością światła? Popraw to!</li>"
+    );
+    alert_show = true;
   }
   if ( 0 == acceleration ){
     alert_container.append(
@@ -54,9 +57,14 @@ function alerts(){
     alert_show = true;
   }
   if ( 2 > steps ){
-    alert_container.append("<li>Ustawiłeś za mało punktów wyliczeniowych (wymagane przynajmniej dwa, aby wykres się pokazał).</li>");
+    alert_container.append("<li>Ustawiłeś za mało punktów wyliczeniowych (wymagane przynajmniej trzy, aby wykres się pokazał).</li>");
     alert_show = true;
   }
+  if ( 30 <= steps ){
+    alert_container.append("<li>Ustawiłeś za dużo punktów wyliczeniowych (maks. 30).</li>");
+    alert_show = true;
+  }
+  /* end */
   if ( ! alert_show ){
     clear_chart();
     fill_chart();

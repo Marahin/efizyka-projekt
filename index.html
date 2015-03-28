@@ -4,6 +4,9 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
 		<title>eFizyka - Projekt Konkursowy</title>
+		<!--[if lte IE8]>
+			<script>alert('Twoja przeglądarka może nie wspierać HTML5. Przepraszamy!');</script>
+			<![endif]-->
     <script type="text/javascript" src="js/vendor/modernizr.js"> </script>
     <script type="text/javascript" src="js/vendor/fastclick.js"> </script>
     <link rel="stylesheet" href="css/foundation.css"> </link>
@@ -17,17 +20,22 @@
           <h1><a href="#">eFizyka - rzut ukośny</a></h1>
         </li>
          <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Opcje</span></a></li>
       </ul>
-
       <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
+					<li class="has-dropdown">
+        		<a href="#">Przykłady</a>
+        		<ul class="dropdown">
+        		</ul>
+      		</li>
           <li class="active"><a href="http://marahin.pl/">Autor</a></li>
         </ul>
       </section>
     </div></nav>
-    <div class="row">
+    <br/>
+		<div class="row">
       <div class="small-12 medium-12 large-12 columns">
         <div id="alert" data-alert class="alert-box info radius">
           Aby wygenerować symulację rzutu, kliknij przycisk na samym dole. Powodzenia!
@@ -48,7 +56,7 @@
           <label for="steps" class="label">Ilość pomiarów (punktów wykresowych)</label>
           <input value=20 type="text" id="steps" /><br/>
           <label for="acceleration" class="label">Przyspieszenie (grawitacja) [m/s^2]</label>
-          <input type="text" value=10 id="text_acceleration" step="any" /><br/>
+          <input type="text" value=9.80665 id="text_acceleration" step="any" /><br/>
           <label for="angle" class="label">Kąt wyrzutu [stopnie]</label>
           <input type="text" value=60 id="text_angle" /><br/>
           <input type="button" id="submit" value="Rzucaj!" class="button expand success large" /><br/>
@@ -97,6 +105,7 @@
 		<script type="text/javascript" src="js/vendor/placeholder.js"> </script>
     <script type="text/javascript" src="js/foundation.min.js"> </script>
 		<script type="text/javascript" src="js/responsive-tables.js"> </script>
+		<script type="text/javascript" src="js/presets.js"> </script>
 		<script type="text/javascript" src="js/form_chart_config.js"></script>
 		<script type="text/javascript" src="js/physics.js"></script>
 		<script type="text/javascript" src="js/tools.js"></script>
@@ -104,6 +113,7 @@
     $(document).foundation();
 			$(document).ready(function(){
 				$("#myChart").hide();
+				fill_presets();
 				$("input[type=button]").on('click', function(){
 					body = $("html, body");
 					body.animate({scrollTop:0}, '500', 'swing', function() { refresh_values(); });
