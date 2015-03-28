@@ -20,7 +20,7 @@ function fill_presets(){
       pluto = new Preset( "Pluton", 0.66, "Planeta karłowata, dziewiąty w kolejności obiekt od Słońca.")
 
     ], function(index,value){
-      $(".top-bar-section .right .has-dropdown .dropdown").append("<li class=\"preset-item\" name=\"" + value.name + "\" accel=\"" + value.acceleration + "\"><a href=\"#\">" + value.name + "</a></li>");
+      $(".top-bar-section .right .has-dropdown .dropdown").append("<li class=\"preset-item\" name=\"" + value.name + "\" accel=\"" + value.acceleration + "\"><a href=\"#\"><span title=\"" + value.info + "\">" + value.name + "</span></a></li>");
     }
   );
   $(".preset-item").click(function(){
