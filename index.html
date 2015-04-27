@@ -25,6 +25,7 @@
       <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
+          <li><a href="#" data-reveal-id="description">Opis projektu</a></li>
 					<li class="has-dropdown">
         		<a href="#">Przykłady</a>
         		<ul class="dropdown">
@@ -42,6 +43,40 @@
           <a href="#" class="close">&times;</a>
         </div>
       </div>
+    </div>
+    <div id="description" class="reveal-modal" data-reveal aria-labelledby="Opis projektu, algorytmy i technologie" aria-hidden="true" role="dialog">
+      <h2 id="modalTitle">Opis</h2>
+        <p class="lead">Aplikacja została wykonana przy użyciu technologii HTML5 (wykorzystanie Canvas) oraz Javascript (JQuery + Chart.js). Do wykonania interfejsu użytkownika użyto Foundation Framework, który pozwala na tworzenie minimalistycznych, responsywnych aplikacji.</p>
+        <p>Działanie aplikacji opiera się o wypełnienie formularza i uruchomienie. Po kliknięciu przycisku uzupełniane są dane statystyczne (średnie, w tabeli) równolegle z dodawaniem wyliczanych punktów do wykresu.</p>
+        <p>Po wypełnieniu wykresu oraz tabelki średnich pomiarów, wszelkie wyniki są zaokrąglane i wyświetlane. Dzięki temu punkty są precyzyjnie osadzone w wykresie, ale czytelne dla użytkownika.</p>
+      <h2 id="modalTitle">Technologie</h2>
+        <ul>
+          <li><strong>HTML5 + JS</strong> - dzięki czemu strona jest dynamiczna, wszystko odbywa się bez przeładowania, obliczenia generowane w przeglądarce użytkownika</li>
+          <li><strong>JQuery</strong> - generowanie aplikacji + operacje na obiektach Javascript</li>
+          <li><strong>Foundation</strong> - framework do tworzenia responsywnego designu strony</li>
+          <li><strong>Chart.js</strong> - za jego pośrednictwem rysujemy wykres lotu obiektu</li>
+        </ul>
+      <h2 id="modalTitle">Algorytmy</h2>
+      <p class="lead">Funkcje pozwalające aplikacji na działanie można prześledzić w następujących plikach:</p>
+      <ul>
+        <li><a href="js/form_chart_config.js">KONFIGURACJA WYKRESU</a> - znajdują się w niej podstawowe opcje wykresu jak i funkcje pozwalające na rysowanie, czyszczenie i edytowanie wykresu (implementacja własna).</li>
+        <li><a href="js/presets.js">PRZYKŁADY</a> - zawiera funkcje pozwalające na wypełnienie listy przykładów danych gwiazd i planet</li>
+        <li><a href="js/tools.js">NARZĘDZIA</a> - zawiera funkcje rozruchowe, obsługę błędów walidacyjnych (np. gdy ustawimy prędkość początkową >= prędkości światła), wypełnianie wykresu i wypisywanie średnich wartości do tabeli na dole strony.</li>
+      </ul>
+      <p>Wzory fizyczne można znaleźć <a href="js/physics.js">TUTAJ</a> (zawarte są w funkcjach Javascript), legenda nazw zmiennych:</p>
+      <ul>
+        <li><pre>Math.cos</pre><pre>Math.sin</pre> - funkcje matematyczne dające wartość cosinusa i sinusa dla zmiennej podanej w radianach</li>
+        <li><pre>angle</pre> - kąt wyrzutu (jednostka: radian)</li>
+        <li><pre>initial_velocity</pre> - prędkość początkowa, podawana przy rzucie</li>
+        <li><pre>v0y()</pre><pre>v0x()</pre> - funkcje zwracające wartość prędkości początkowej na osi X i Y </li>
+        <li><pre>acceleration</pre> - przyspieszenie grawitacyjne</li>
+        <li><pre>obj_velocity()</pre> - funkcja wyliczająca prędkość obiektu w danym czasie</li>
+        <li><pre>vx(t)</pre><pre>vy(t)</pre> - funkcje wyliczające prędkość na osi X i Y w czasie <i>t</i></li>
+        <li><pre>get_max_height()</pre> - funkcja zwracająca maksymalną osiągalną przez rzut wysokość</li>
+        <li><pre>get_flight_time()</pre> - funkcja zwracająca czas lotu obiektu</li>
+        <li><pre>get_range()</pre> - funkcja zwracająca zasięg obiektu (maksymalną odległość od punktu 0 na osi X)</li>        
+      </ul>
+      <a class="close-reveal-modal" aria-label="Zamknij">&#215;</a>
     </div>
     <div class="row">
       <div class="small-12 medium-12 large-12 columns">
